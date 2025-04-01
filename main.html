@@ -1,0 +1,860 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Junior RANA - Rajput Association of North America</title>
+    <style>
+      /* Global Styles */
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+        font-family: "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI",
+          Roboto, Oxygen, Ubuntu, Cantarell, "Open Sans", "Helvetica Neue",
+          sans-serif;
+      }
+
+      :root {
+        --primary: #1a1a1a;
+        --accent: #ff5a5f;
+        --light: #f8f8f8;
+        --gray: #e0e0e0;
+        --dark-gray: #707070;
+      }
+
+      body {
+        background-color: white;
+        color: var(--primary);
+        line-height: 1.6;
+        overflow-x: hidden;
+      }
+
+      h1,
+      h2,
+      h3,
+      h4 {
+        font-weight: 700;
+        line-height: 1.2;
+      }
+
+      a {
+        text-decoration: none;
+        color: inherit;
+      }
+
+      img {
+        max-width: 100%;
+      }
+
+      /* Header & Navigation */
+      header {
+        position: fixed;
+        width: 100%;
+        top: 0;
+        left: 0;
+        z-index: 1000;
+        background-color: white;
+        box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+        padding: 1rem 0;
+      }
+
+      .header-container {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        max-width: 1200px;
+        margin: 0 auto;
+        padding: 0 2rem;
+      }
+
+      .logo {
+        font-size: 1.8rem;
+        font-weight: 900;
+        color: var(--primary);
+      }
+
+      .logo span {
+        color: var(--accent);
+      }
+
+      nav ul {
+        display: flex;
+        list-style: none;
+      }
+
+      nav ul li {
+        margin-left: 2rem;
+        font-weight: 500;
+        text-transform: uppercase;
+        font-size: 0.9rem;
+        letter-spacing: 1px;
+      }
+
+      nav ul li a:hover {
+        color: var(--accent);
+      }
+
+      .mobile-menu {
+        display: none;
+        font-size: 1.5rem;
+        cursor: pointer;
+      }
+
+      /* Hero Section */
+      .hero {
+        height: 100vh;
+        background-color: var(--light);
+        display: flex;
+        align-items: center;
+        padding-top: 5rem;
+      }
+
+      .hero-container {
+        max-width: 1200px;
+        margin: 0 auto;
+        padding: 0 2rem;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+      }
+
+      .hero-content {
+        width: 50%;
+      }
+
+      .hero-image {
+        width: 45%;
+      }
+
+      .hero h1 {
+        font-size: 4rem;
+        margin-bottom: 1.5rem;
+        line-height: 1.1;
+      }
+
+      .hero p {
+        font-size: 1.2rem;
+        margin-bottom: 2rem;
+        color: var(--dark-gray);
+      }
+
+      .cta-button {
+        display: inline-block;
+        background-color: var(--accent);
+        color: white;
+        padding: 0.8rem 2rem;
+        border-radius: 2px;
+        font-weight: 600;
+        text-transform: uppercase;
+        letter-spacing: 1px;
+        transition: all 0.3s ease;
+      }
+
+      .cta-button:hover {
+        background-color: #e73d42;
+        transform: translateY(-2px);
+      }
+
+      /* About Section */
+      .section {
+        padding: 5rem 0;
+      }
+
+      .section-container {
+        max-width: 1200px;
+        margin: 0 auto;
+        padding: 0 2rem;
+      }
+
+      .section-title {
+        font-size: 2.5rem;
+        margin-bottom: 1rem;
+        text-align: center;
+      }
+
+      .section-subtitle {
+        font-size: 1.2rem;
+        color: var(--dark-gray);
+        margin-bottom: 3rem;
+        text-align: center;
+      }
+
+      .about-grid {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 3rem;
+      }
+
+      .about-card {
+        background-color: var(--light);
+        padding: 2rem;
+        border-radius: 4px;
+        transition: all 0.3s ease;
+      }
+
+      .about-card:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+      }
+
+      .about-card h3 {
+        font-size: 1.8rem;
+        margin-bottom: 1rem;
+      }
+
+      .about-card p {
+        color: var(--dark-gray);
+      }
+
+      /* Mission Grid Styles */
+      .mission-grid {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 2rem;
+        margin-bottom: 3rem;
+      }
+
+      .mission-card {
+        background-color: var(--light);
+        padding: 2rem;
+        border-radius: 4px;
+        transition: all 0.3s ease;
+        text-align: center;
+      }
+
+      .mission-card:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+      }
+
+      .mission-card h3 {
+        font-size: 1.8rem;
+        margin-bottom: 1rem;
+        text-align: center;
+      }
+
+      .mission-card p {
+        color: var(--dark-gray);
+        text-align: center;
+      }
+
+      /* Programs Section */
+      .programs {
+        background-color: var(--light);
+      }
+
+      /* Team Section */
+      .team-grid {
+        display: grid;
+        grid-template-columns: repeat(4, 1fr);
+        gap: 2rem;
+      }
+
+      .team-member {
+        text-align: center;
+      }
+
+      .team-image {
+        width: 150px;
+        height: 150px;
+        border-radius: 50%;
+        background-color: var(--gray);
+        margin: 0 auto 1rem;
+        overflow: hidden;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+      }
+
+      .team-member h3 {
+        font-size: 1.2rem;
+        margin-bottom: 0.5rem;
+      }
+
+      .team-member p {
+        color: var(--dark-gray);
+        font-size: 0.9rem;
+      }
+
+      /* Contact Section */
+      .contact-form {
+        max-width: 600px;
+        margin: 0 auto;
+      }
+
+      .form-group {
+        margin-bottom: 1.5rem;
+      }
+
+      .form-group label {
+        display: block;
+        margin-bottom: 0.5rem;
+        font-weight: 500;
+      }
+
+      .form-group input,
+      .form-group textarea {
+        width: 100%;
+        padding: 0.8rem;
+        border: 1px solid var(--gray);
+        border-radius: 4px;
+        font-size: 1rem;
+      }
+
+      .form-group textarea {
+        height: 150px;
+        resize: vertical;
+      }
+
+      .submit-button {
+        background-color: var(--accent);
+        color: white;
+        border: none;
+        padding: 0.8rem 2rem;
+        border-radius: 2px;
+        font-weight: 600;
+        text-transform: uppercase;
+        letter-spacing: 1px;
+        cursor: pointer;
+        transition: all 0.3s ease;
+      }
+
+      .submit-button:hover {
+        background-color: #e73d42;
+      }
+
+      /* Footer */
+      footer {
+        background-color: var(--primary);
+        color: white;
+        padding: 3rem 0;
+      }
+
+      .footer-container {
+        max-width: 1200px;
+        margin: 0 auto;
+        padding: 0 2rem;
+        display: grid;
+        grid-template-columns: repeat(4, 1fr);
+        gap: 2rem;
+      }
+
+      .footer-logo {
+        font-size: 1.5rem;
+        font-weight: 900;
+        margin-bottom: 1rem;
+      }
+
+      .footer-logo span {
+        color: var(--accent);
+      }
+
+      .footer-links h4 {
+        margin-bottom: 1rem;
+        font-size: 1.2rem;
+      }
+
+      .footer-links ul {
+        list-style: none;
+      }
+
+      .footer-links ul li {
+        margin-bottom: 0.5rem;
+      }
+
+      .footer-links ul li a:hover {
+        color: var(--accent);
+      }
+
+      .social-icons {
+        display: flex;
+        gap: 1rem;
+        margin-top: 1rem;
+      }
+
+      .social-icon {
+        width: 40px;
+        height: 40px;
+        border-radius: 50%;
+        background-color: rgba(255, 255, 255, 0.1);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        transition: all 0.3s ease;
+      }
+
+      .social-icon:hover {
+        background-color: var(--accent);
+      }
+
+      .copyright {
+        text-align: center;
+        margin-top: 3rem;
+        padding-top: 1.5rem;
+        border-top: 1px solid rgba(255, 255, 255, 0.1);
+        font-size: 0.9rem;
+        color: rgba(255, 255, 255, 0.7);
+      }
+
+      /* Custom styles for mission list */
+      .mission-list {
+        list-style-position: inside;
+        margin-bottom: 1rem;
+      }
+
+      .mission-list li {
+        margin-bottom: 1rem;
+      }
+
+      /* Responsive Styles */
+      @media (max-width: 1024px) {
+        .hero h1 {
+          font-size: 3rem;
+        }
+
+        .team-grid {
+          grid-template-columns: repeat(3, 1fr);
+        }
+      }
+
+      @media (max-width: 992px) {
+        .mission-grid {
+          grid-template-columns: repeat(2, 1fr);
+        }
+      }
+
+      @media (max-width: 768px) {
+        .hero-container {
+          flex-direction: column;
+          text-align: center;
+        }
+
+        .hero-content,
+        .hero-image {
+          width: 100%;
+        }
+
+        .hero-image {
+          margin-top: 2rem;
+          order: 2;
+        }
+
+        .about-grid {
+          grid-template-columns: 1fr;
+        }
+
+        .mission-grid {
+          grid-template-columns: 1fr;
+        }
+
+        .team-grid {
+          grid-template-columns: repeat(2, 1fr);
+        }
+
+        .footer-container {
+          grid-template-columns: repeat(2, 1fr);
+        }
+
+        nav ul {
+          display: none;
+        }
+
+        .mobile-menu {
+          display: block;
+        }
+      }
+
+      @media (max-width: 480px) {
+        .section-title {
+          font-size: 2rem;
+        }
+
+        .team-grid {
+          grid-template-columns: 1fr;
+        }
+
+        .footer-container {
+          grid-template-columns: 1fr;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <!-- Header & Navigation -->
+    <header>
+      <div class="header-container">
+        <a href="#" class="logo">Junior <span>RANA</span></a>
+        <nav>
+          <ul>
+            <li><a href="#about">About</a></li>
+            <li><a href="#team">Team</a></li>
+            <li><a href="#contact">Contact</a></li>
+          </ul>
+        </nav>
+        <div class="mobile-menu">☰</div>
+      </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero">
+      <div class="hero-container">
+        <div class="hero-content">
+          <h1>Empowering Young Rajputs</h1>
+          <p>
+            Junior RANA is a new branch of RANA DC Chapter that works to spread
+            knowledge about rich and unique Rajput culture to younger
+            generations! Recently, many Indian children have been losing touch
+            with their culture and Junior RANA aims to change that by making
+            Indian Culture fun to learn about and allow Indian Kids to meet
+            other kids to create a long lasting community.
+          </p>
+          <a href="#about" class="cta-button">Learn More</a>
+        </div>
+        <div class="hero-image">
+          <img
+            src="/api/placeholder/500/350"
+            alt="Rajput youth engaged in cultural activities"
+          />
+        </div>
+      </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about" class="section">
+      <div class="section-container">
+        <h2 class="section-title">About Junior RANA</h2>
+        <p class="section-subtitle">
+          Welcome to the home page of the DC Chapter of JUNIOR Rajputa
+          Association of Northern America! We work to spread knowledge about
+          rich and unique Rajput culture to younger generations!
+        </p>
+
+        <h3 class="section-title">Our Mission</h3>
+
+        <div class="mission-grid">
+          <div class="mission-card">
+            <h3><b>Make</b></h3>
+            <p>
+              RANA DC Chapter more engaging for kids. Many children are
+              uninterested in RANA because when they first go to the gatherings,
+              they are met with limited options for kids activities, which makes
+              them less likely to want to go to more meetings. Many adults in
+              the main chapter joined RANA as a way to connect their kids to the
+              Rajput Community, but if we push the kids away with uninteresting
+              meetings and gatherings, the parents who joined solely for their
+              kids will also begin to leave. We can create engagement by adding
+              more kids activities like sports areas and childrens' games.
+              Adding more children-oriented activities will make children more
+              likely to want to attend RANA meetups, which will lead to more
+              engagment in RANA and Indian Culture.
+            </p>
+          </div>
+
+          <div class="mission-card">
+            <h3><b>Reconnect</b></h3>
+            <p>
+              Rajput Youth with their culutre and heritage. Much of the youth
+              has lost interest in our culture because of 2 main factors, one
+              controllable and one uncontrollable. The first reason is that
+              Indian Culture is forced upon many kids by their parents. Some are
+              lucky to have their culture eased into them. The purpose of Junior
+              RANA is to ease Indian Culture into the lives of kids in a fun and
+              interactive way that doesn't push them away. The main way to do
+              this is by making RANA DC Chapter more engaing for youth, and
+              hosting cultural events with incentives for children to attend and
+              learn about their culture such as poojas, religous celebrations,
+              culture fairs, and much more.
+            </p>
+          </div>
+
+          <div class="mission-card">
+            <h3><b>Creating</b></h3>
+            <p>
+              a community that priortizes the youth and makes sure that they get
+              oppurtunities to learn about their culture and heritage. this is
+              very important because the youth is the future, and by making sure
+              that the youth learn about our culture, we are securing the legacy
+              of the Rajputs and the RANA Organization. We wil make his happen
+              by coordinating with the main RANA DC Chapter to bring attention
+              to the fact that we need to focus on the youth. We will host
+              rallies, events, and speak to the adults at main DC Chapter
+              gatherings about this matter.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Team Section -->
+    <section id="team" class="section programs">
+      <div class="section-container">
+        <h2 class="section-title">Our Leadership Team</h2>
+        <p class="section-subtitle">
+          Dedicated young leaders committed to preserving Rajput heritage
+        </p>
+
+        <div class="team-grid">
+          <div class="team-member">
+            <div class="team-image">
+              <img src="/api/placeholder/150/150" alt="Ronit Singh" />
+            </div>
+            <h3>Ronit Singh</h3>
+            <p>Co-president</p>
+          </div>
+
+          <div class="team-member">
+            <div class="team-image">
+              <img src="/api/placeholder/150/150" alt="Kush Jadon" />
+            </div>
+            <h3>Kush Jadon</h3>
+            <p>Co-president</p>
+          </div>
+
+          <div class="team-member">
+            <div class="team-image">
+              <img src="/api/placeholder/150/150" alt="Rianiba Chudusama" />
+            </div>
+            <h3>Rianiba Chudusama</h3>
+            <p>Secretary</p>
+          </div>
+
+          <div class="team-member">
+            <div class="team-image">
+              <img src="/api/placeholder/150/150" alt="Shubh Jadon" />
+            </div>
+            <h3>Shubh Jadon</h3>
+            <p>Finance Manager</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Added Leadership Profiles Section -->
+    <section class="section">
+      <div class="section-container">
+        <h2 class="section-title">Meet Our Youth Leaders</h2>
+        <p class="section-subtitle">
+          Getting to know the team behind Junior RANA
+        </p>
+
+        <div class="about-grid">
+          <div class="about-card">
+            <h3>Co-president: Ronit Singh</h3>
+            <p>
+              Ronit Singh is a 9th grade living in Northern Virginia. He
+              regularly attends RANA DC Chapter events and is active within the
+              Rajput Community.
+            </p>
+          </div>
+          <div class="about-card">
+            <h3>Co-president: Kush Jadon</h3>
+            <p>
+              Kush Jadon is a 10th grader from Northern Virginia, active in RANA
+              DC chapter who wants to help immerse his generation of Rajputs in
+              their culture.
+            </p>
+          </div>
+          <div class="about-card">
+            <h3>Secretary: Rianiba Chudusama</h3>
+            <p>
+              Rianiba Chudasama is a 7th grade student living in Virginia Beach.
+              She has been attending and participating in RANA'S cultural
+              activities for the welfare of Rajput community.
+            </p>
+          </div>
+          <div class="about-card">
+            <h3>Finance Manager: Shubh Jadon</h3>
+            <p>
+              Shubh Jadon is as 6th grader in Northern Virginia. She is actively
+              participates in RANA DC Chapter and helps our youth understand our
+              culture and know more about our traditions.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="section programs">
+      <div class="section-container">
+        <h2 class="section-title">Get in Touch</h2>
+        <p class="section-subtitle">
+          Have questions? We'd love to hear from you!
+        </p>
+
+        <div class="contact-form">
+          <form>
+            <div class="form-group">
+              <label for="name">Name</label>
+              <input type="text" id="name" name="name" required />
+            </div>
+
+            <div class="form-group">
+              <label for="email">Email</label>
+              <input type="email" id="email" name="email" required />
+            </div>
+
+            <div class="form-group">
+              <label for="subject">Subject</label>
+              <input type="text" id="subject" name="subject" required />
+            </div>
+
+            <div class="form-group">
+              <label for="message">Message</label>
+              <textarea id="message" name="message" required></textarea>
+            </div>
+
+            <button type="submit" class="submit-button">Send Message</button>
+          </form>
+        </div>
+      </div>
+    </section>
+
+    <!-- Footer old
+    <footer>
+      <div class="footer-container">
+        <div class="footer-about">
+          <div class="footer-logo">Junior <span>RANA</span></div>
+          <p>
+            Empowering young Rajputs through cultural connections and
+            educational programs that prepare them for community leadership.
+          </p>
+          <div class="social-icons">
+            <a href="#" class="social-icon">f</a>
+            <a href="#" class="social-icon">in</a>
+            <a href="#" class="social-icon">ig</a>
+            <a href="#" class="social-icon">tw</a>
+          </div>
+        </div>
+
+        <div class="footer-links">
+          <h4>Quick Links</h4>
+          <ul>
+            <li><a href="#">Home</a></li>
+            <li><a href="#about">About</a></li>
+            <li><a href="#team">Team</a></li>
+            <li><a href="#contact">Contact</a></li>
+          </ul>
+        </div>
+
+        <div class="footer-links">
+          <h4>Contact</h4>
+          <ul>
+            <li>junior.rana2025@gmail.com</li>
+            <li>+1 (571) 306-9126</li>
+          </ul>
+        </div>
+
+        <div class="footer-links">
+          <h4>Follow Us</h4>
+          <ul>
+            <li><a href="#">Facebook</a></li>
+            <li><a href="#">Instagram</a></li>
+            <li><a href="#">Twitter</a></li>
+            <li><a href="#">LinkedIn</a></li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="copyright">
+        <p>&copy; 2025 Junior RANA. All rights reserved.</p>
+      </div>
+    </footer> -->
+    <footer>
+      <div class="footer-container">
+        <div class="footer-about">
+          <div class="footer-logo">Junior <span>RANA</span></div>
+          <p>
+            Empowering young Rajputs through cultural connections and
+            educational programs that prepare them for community leadership.
+          </p>
+          <div class="social-icons">
+            <a
+              href="https://www.facebook.com/profile.php?id=61574712518932"
+              class="social-icon"
+              >f</a
+            >
+            <a href="https://www.instagram.com/j_rana25/" class="social-icon"
+              >ig</a
+            >
+          </div>
+        </div>
+
+        <div class="footer-links">
+          <h4>Quick Links</h4>
+          <ul>
+            <li><a href="#">Home</a></li>
+            <li><a href="#about">About</a></li>
+            <li><a href="#team">Team</a></li>
+            <li><a href="#contact">Contact</a></li>
+          </ul>
+        </div>
+
+        <div class="footer-links">
+          <h4>Contact</h4>
+          <ul>
+            <li>junior.rana2025@gmail.com</li>
+            <li>+1 (571) 306-9126</li>
+          </ul>
+        </div>
+
+        <div class="footer-links">
+          <h4>Follow Us</h4>
+          <ul>
+            <li>
+              <a href="https://www.facebook.com/profile.php?id=61574712518932"
+                >Facebook</a
+              >
+            </li>
+            <li><a href="https://www.instagram.com/j_rana25/">Instagram</a></li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="copyright">
+        <p>&copy; 2025 Junior RANA. All rights reserved.</p>
+      </div>
+    </footer>
+    <!-- Simple JavaScript for Mobile Menu Toggle -->
+    <script>
+      document.addEventListener("DOMContentLoaded", function () {
+        const mobileMenu = document.querySelector(".mobile-menu");
+        const navMenu = document.querySelector("nav ul");
+
+        mobileMenu.addEventListener("click", function () {
+          navMenu.style.display =
+            navMenu.style.display === "flex" ? "none" : "flex";
+        });
+
+        // Close mobile menu when clicking on a link
+        const navLinks = document.querySelectorAll("nav ul li a");
+        navLinks.forEach((link) => {
+          link.addEventListener("click", function () {
+            if (window.innerWidth <= 768) {
+              navMenu.style.display = "none";
+            }
+          });
+        });
+
+        // Smooth scrolling for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach((anchor) => {
+          anchor.addEventListener("click", function (e) {
+            e.preventDefault();
+
+            const targetId = this.getAttribute("href");
+            if (targetId === "#") return;
+
+            const targetElement = document.querySelector(targetId);
+            if (targetElement) {
+              window.scrollTo({
+                top: targetElement.offsetTop - 80,
+                behavior: "smooth",
+              });
+            }
+          });
+        });
+      });
+    </script>
+  </body>
+</html>
